@@ -18,8 +18,8 @@ var timer;
 var running = false;
 //The delay in milliseconds before showing the stop icon.
 var delay = 200;
-//The default colour;
-var labelcolour = "Blue";
+//The default color;
+var labelcolor = "Blue";
 
 function init() {
 	//Make sure our widget calls a function to clean up after being removed.
@@ -96,11 +96,11 @@ function bundleCheck() {
 function loadPrefs() {
 	//Attempt to load the prefences and store in a temporary variable.
 	var widgetLabelTemp = widget.preferenceForKey(createKey("Widget Label"));
-	var labelcolourTemp = widget.preferenceForKey(createKey("Label Color"));
+	var labelcolorTemp = widget.preferenceForKey(createKey("Label Color"));
 	var scriptfileTemp = widget.preferenceForKey(createKey("Widget Script"));
 	//If there is already a saved value, use it for the widget.
 	if (widgetLabelTemp) widgetLabel = widgetLabelTemp;
-	if (labelcolourTemp) labelcolour = labelcolourTemp;
+	if (labelcolorTemp) labelcolor = labelcolorTemp;
 	if (scriptfileTemp) {
 		scriptfile = scriptfileTemp;
 	} else {
@@ -109,7 +109,7 @@ function loadPrefs() {
 	//Update the textbox to the value used by the widget.
 	document.getElementById("scriptName").value = widgetLabel;
 	//Update the label.
-	clickSwatch(labelcolour);
+	clickSwatch(labelcolor);
 	updateLabel(widgetLabel);
 }
 
@@ -120,7 +120,7 @@ function savePrefs() {
 	updateLabel(widgetLabel);
 	//Save it to preferences.
 	widget.setPreferenceForKey(widgetLabel, createKey("Widget Label"));
-	widget.setPreferenceForKey(labelcolour, createKey("Label Color"));
+	widget.setPreferenceForKey(labelcolor, createKey("Label Color"));
 	widget.setPreferenceForKey(scriptfile, createKey("Widget Script"));
 }
 
@@ -260,7 +260,7 @@ function flip(front, back, transition) {
 }
 
 function dragdrop(event) {
-	//Turn the Textmate icon back to its normal colour.
+	//Turn the Textmate icon back to its normal color.
 	document.getElementById("imgTextmate").src = "images/Icon/textmate_icon.png";
 
 	//Define dropfile, the variable used to store the info from the drag & drop operation.
@@ -385,7 +385,7 @@ function dragover(event) {
 }
 
 function dragleave(event) {
-	//Turn the Textmate icon back to its normal colour.
+	//Turn the Textmate icon back to its normal color.
 	document.getElementById("imgTextmate").src = "images/Icon/textmate_icon.png";
 	//Handle drag & drop event stuff.
 	event.stopPropagation();
@@ -416,9 +416,9 @@ function scriptDone(command) {
 }
 
 function clickSwatch(text) {
-	document.getElementById(labelcolour+"_tick").style.display = "none";
-	document.getElementById("NameTable_" + labelcolour).style.display = "none";
-	labelcolour=text;
-	document.getElementById(labelcolour+"_tick").style.display = "block";
-	document.getElementById("NameTable_" + labelcolour).style.display = "block";
+	document.getElementById(labelcolor+"_tick").style.display = "none";
+	document.getElementById("NameTable_" + labelcolor).style.display = "none";
+	labelcolor=text;
+	document.getElementById(labelcolor+"_tick").style.display = "block";
+	document.getElementById("NameTable_" + labelcolor).style.display = "block";
 }
